@@ -18,5 +18,10 @@ This Progressive Mini Web App (PWA) allows users to search for and view informat
 
 ## Installation and Use
 
-1. Clone the repository:
+1. Clone the repository: https://github.com/junesdream/Pokemon-PWA-App
+
+## Contributing
+
+Contributions are welcome! For major changes, please open an issue first to discuss what you would like to change.
+
 
