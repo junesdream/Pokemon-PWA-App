@@ -1,24 +1,39 @@
-import logo from './logo.svg';
+import { useEffect, useState } from "react";
+import { getAllPokemonList } from "./api/pokemon";
 import './App.css';
 
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  const [pokemonData, setPokemonData] = useState([]);
+
+
+useEffect(() => {
+	async function fetchData() {
+		const data = await getAllPokemonList();
+		setPokemonData(data?.results);
+	}
+	fetchData();
+}, []);
+
+  return (    
+		<div className="container">
+			{pokemonData?.map((poke, i) => {
+				return (
+					<div className="pokemon-box" key={i}>
+						<div className="poke-name">
+							<p>
+								{poke.name}
+							</p>
+						</div>
+						<img
+							alt="pokemon"
+							src={`https://img.pokemondb.net/artwork/large/${poke.name}.jpg`}
+						/>
+					</div>
+				);
+			})}
+			<div></div>
+		</div>
   );
 }
 
